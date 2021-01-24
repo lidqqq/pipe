@@ -8,8 +8,9 @@
     "build": "npx run-s build:ts build:esbuild:*",
     "build:ts": "npx tsc --build tsconfig.json",
     "build:esbuild:cjs": "npx esbuild --bundle src/index.ts --outfile=dist/target/cjs.js --platform=node",
-    "build:esbuild:esm": "npx esbuild --bundle src/index.ts --outfile=dist/target/esm.js --platform=node --format=esm",
+    "build:esbuild:esm": "npx esbuild --bundle src/index.ts --outfile=dist/target/esm.mjs --platform=node --format=esm",
     "build:esbuild:browser": "npx esbuild --bundle src/index.ts --outfile=dist/target/browser.js --platform=browser",
+    "prebuild": "sed -i '' -e 's/@/./g' dist/src/index.d.ts dist/src/index.js",
     "prepublish": "npm run clean && npm test && npm run build",
     "coverage": "npx jest --coverage"
   },
@@ -23,11 +24,15 @@
     "typescript": "4.1.3"
   },
   "main": "./dist/target/cjs.js",
+  "module": "./dist/target/esm.mjs",
   "browser": "./dist/target/browser.js",
   "exports": {
-    "browser": "./dist/target/browser.js",
-    "default": "./dist/target/esm.js"
+    ".": {
+      "require": "./dist/target/cjs.js",
+      "default": "./dist/target/esm.mjs"
+    }
   },
+  "types": "dist/src/index.d.ts",
   "files": [
     "dist",
     "README.md",
