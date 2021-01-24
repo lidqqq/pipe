@@ -39,5 +39,13 @@
     "typescript"
   ],
   "author": "lidqqq <lidqqq.dev@gmail.com> (https://lidqqq.dev/)",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lidqqq/pipe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lidqqq/pipe/issues"
+  },
+  "homepage": "https://github.com/lidqqq/pipe#readme"
 }
