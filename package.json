@@ -10,7 +10,7 @@
     "build:esbuild:cjs": "npx esbuild --bundle src/index.ts --outfile=dist/target/cjs.js --platform=node",
     "build:esbuild:esm": "npx esbuild --bundle src/index.ts --outfile=dist/target/esm.js --platform=node --format=esm",
     "build:esbuild:browser": "npx esbuild --bundle src/index.ts --outfile=dist/target/browser.js --platform=browser",
-    "prepublish": "npm run clean && npm test",
+    "prepublish": "npm run clean && npm test && npm run build",
     "coverage": "npx jest --coverage"
   },
   "devDependencies": {
