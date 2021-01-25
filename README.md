@@ -2,6 +2,12 @@
 
 A type safety function to create a pipeline
 
+## Installation
+
+```
+npm i @lidqqq/pipe
+```
+
 ## Usage
 
 ### TypeScript
