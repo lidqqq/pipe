@@ -15,11 +15,12 @@ npm i @lidqqq/pipe
 ```typescript
 // Async
 import { pipe } from '@lidqqq/pipe';
+import type { AsyncReturnType } from '@lidqqq/pipe';
 
 async function plus2(n: number): Promise<number> {
   return n + 2;
 }
-async function n2s(n: number): Promise<string> {
+async function n2s(n: AsyncReturnType<typeof plus2>): Promise<string> {
   return n.toString();
 }
 
