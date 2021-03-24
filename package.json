@@ -1,19 +1,19 @@
 {
   "name": "@lidqqq/pipe",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A function to create piped function",
   "scripts": {
-    "test": "npx jest",
+    "test": "jest",
     "clean": "rm -rf dist/ coverage/",
-    "build": "npx run-s build:ts build:esbuild:*",
-    "build:ts": "npx tsc --build tsconfig.json",
-    "build:esbuild:cjs": "npx esbuild --bundle src/index.ts --outfile=dist/target/cjs.js --platform=node",
-    "build:esbuild:esm": "npx esbuild --bundle src/index.ts --outfile=dist/target/esm.mjs --platform=node --format=esm",
-    "build:esbuild:browser": "npx esbuild --bundle src/index.ts --outfile=dist/target/browser.js --platform=browser",
+    "build": "run-s build:ts build:esbuild:*",
+    "build:ts": "tsc --build tsconfig.json",
+    "build:esbuild:cjs": "esbuild --bundle src/index.ts --outfile=dist/target/cjs.js --platform=node",
+    "build:esbuild:esm": "esbuild --bundle src/index.ts --outfile=dist/target/esm.mjs --platform=node --format=esm",
+    "build:esbuild:browser": "esbuild --bundle src/index.ts --outfile=dist/target/browser.js --platform=browser",
     "postbuild": "sed -i '' -e 's/@/./g' dist/src/index.d.ts dist/src/index.js",
     "prepublish:npm": "npm run clean && npm test && npm run build",
     "publish:npm": "npm publish --access=public ./",
-    "coverage": "npx jest --coverage"
+    "coverage": "jest --coverage"
   },
   "devDependencies": {
     "esbuild": "0.8.34",

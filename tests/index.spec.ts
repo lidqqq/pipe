@@ -1,4 +1,4 @@
-import { pipe, pipeSync } from '@/index';
+import { AsyncReturnType, pipe, pipeSync } from '@/index';
 
 function plus2(a: number) {
   return a + 2;
@@ -23,10 +23,10 @@ function set2map<T>(set: Set<T>): Map<string, T> {
 async function a_plus2(n: number): Promise<number> {
   return n + 2;
 }
-async function a_n2s(n: number): Promise<string> {
+async function a_n2s(n: AsyncReturnType<typeof a_plus2>): Promise<string> {
   return n.toString();
 }
-async function a_s2arr(s: string): Promise<string[]> {
+async function a_s2arr(s: AsyncReturnType<typeof a_n2s>): Promise<string[]> {
   return [s];
 }
 async function a_rr2set<T>(arr: T[]): Promise<Set<T>> {

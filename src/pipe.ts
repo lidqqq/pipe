@@ -118,3 +118,7 @@ const pipeSync: PipeSync = (...fns: Function[]) => (x: any) => {
 };
 
 export { pipe, pipeSync };
+
+export type AsyncReturnType<
+  T extends (...args: any) => any
+> = ReturnType<T> extends Promise<infer T> ? T : never;
